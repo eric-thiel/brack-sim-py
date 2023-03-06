@@ -31,11 +31,11 @@ def sim_actuals(West, Midwest, East, South, n=10000):
     return sim_dict
 
 def get_game_winner(game_participants, kp_dict):
-    game_name = f"{game_participants[0].name} vs {game_participants[0].name}"
+    game_name = f"{game_participants[0].name} vs {game_participants[1].name}"
     if game_name not in game_probs:
         one = kp_dict[game_participants[0].name]['AdjEM']
         two = kp_dict[game_participants[1].name]['AdjEM']
-        prob = norm.cdf(one - two, 0, 9)
+        prob = norm.cdf(one - two, 0, 11)
         game_probs[game_name] = prob
     else:
         prob = game_probs[game_name]

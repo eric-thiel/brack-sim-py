@@ -6,6 +6,7 @@ from models import Team, adjust_name
 from tqdm import tqdm
 from generate_actuals import sim_actuals
 from generate_choices import sim_choices
+from collections import Counter
 
 
 def generate_bracket():
@@ -34,8 +35,13 @@ def run():
     West, Midwest, East, South = generate_bracket()
     sim_dict = sim_actuals(West, Midwest, East, South)
     player_brackets = sim_choices(West, Midwest, East, South)
-    print(sim_dict[1])
-    print(player_brackets[1])
+    winner = []
+    for sim_num, results in sim_dict.items():
+        winner.append(results[5][0])
+    wins = Counter(winner)
+    print(wins)
+
+
 
 if __name__ == "__main__":
     run()

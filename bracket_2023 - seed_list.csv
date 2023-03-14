@@ -1,0 +1,65 @@
+team,region,seed,first_four,elim_round
+Alabama,South,1,FALSE,NA
+Maryland,South,8,FALSE,NA
+West Virginia,South,9,FALSE,NA
+San Diego St.,South,5,FALSE,NA
+Charleston,South,12,FALSE,NA
+Virginia,South,4,FALSE,NA
+Furman,South,13,FALSE,NA
+Creighton,South,6,FALSE,NA
+N.C. State,South,11,FALSE,NA
+Baylor,South,3,FALSE,NA
+UC Santa Barbara,South,14,FALSE,NA
+Missouri,South,7,FALSE,NA
+Utah St.,South,10,FALSE,NA
+Arizona,South,2,FALSE,NA
+Princeton,South,15,FALSE,NA
+Houston,Midwest,1,FALSE,NA
+Northern Kentucky,Midwest,16,FALSE,NA
+Iowa,Midwest,8,FALSE,NA
+Auburn,Midwest,9,FALSE,NA
+Miami FL,Midwest,5,FALSE,NA
+Drake,Midwest,12,FALSE,NA
+Indiana,Midwest,4,FALSE,NA
+Kent St.,Midwest,13,FALSE,NA
+Iowa St.,Midwest,6,FALSE,NA
+Xavier,Midwest,3,FALSE,NA
+Kennesaw St.,Midwest,14,FALSE,NA
+Texas A&M,Midwest,7,FALSE,NA
+Penn St.,Midwest,10,FALSE,NA
+Texas,Midwest,2,FALSE,NA
+Colgate,Midwest,15,FALSE,NA
+Purdue,East,1,FALSE,NA
+Memphis,East,8,FALSE,NA
+Florida Atlantic,East,9,FALSE,NA
+Duke,East,5,FALSE,NA
+Oral Roberts,East,12,FALSE,NA
+Tennessee,East,4,FALSE,NA
+Louisiana,East,13,FALSE,NA
+Kentucky,East,6,FALSE,NA
+Providence,East,11,FALSE,NA
+Kansas St.,East,3,FALSE,NA
+Montana St.,East,14,FALSE,NA
+Michigan St.,East,7,FALSE,NA
+USC,East,10,FALSE,NA
+Marquette,East,2,FALSE,NA
+Vermont,East,15,FALSE,NA
+Kansas,West,1,FALSE,NA
+Howard,West,16,FALSE,NA
+Arkansas,West,8,FALSE,NA
+Illinois,West,9,FALSE,NA
+Saint Mary's,West,5,FALSE,NA
+VCU,West,12,FALSE,NA
+Connecticut,West,4,FALSE,NA
+Iona,West,13,FALSE,NA
+TCU,West,6,FALSE,NA
+Gonzaga,West,3,FALSE,NA
+Grand Canyon,West,14,FALSE,NA
+Northwestern,West,7,FALSE,NA
+Boise St.,West,10,FALSE,NA
+UCLA,West,2,FALSE,NA
+UNC Asheville,West,15,FALSE,NA
+Texas A&M Corpus Chris,South,16,FALSE,NA
+Mississippi St.,Midwest,11,FALSE,NA
+Arizona St.,West,11,FALSE,NA
+Texas Southern,East,16,FALSE,NA

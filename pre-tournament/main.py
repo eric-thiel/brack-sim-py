@@ -56,9 +56,9 @@ def run_contest_sims(player_scores, player_brackets):
     player_placements = {}
     for player_id, obj in player_brackets.items():
         player_placements[player_id] = {'won': 0, 'top_10': 0, 'in': 0}
-    for _ in tqdm(range(1000)):
+    for _ in tqdm(range(20000)):  # 20000
         picked_brackets = {}
-        shit = np.random.choice(list(player_brackets.keys()), 200)
+        shit = np.random.choice(list(player_brackets.keys()), 200) # 200
         for i in shit:
             picked_brackets[i] = player_scores[i]
         contest = []
@@ -67,7 +67,6 @@ def run_contest_sims(player_scores, player_brackets):
             contest.append(contest_scores)
         ranks = len(contest[0]) - rankdata(contest, method="min", axis=1) + 1
         by_lineup = np.transpose(ranks)
-        n_in_contest = len(by_lineup)
         g = 0
         hold = {}
         for id, obj in picked_brackets.items():
@@ -86,31 +85,23 @@ def run_contest_sims(player_scores, player_brackets):
             final[id] = 0
     # print(final)
     sorted_one = sorted(final.items(), key=lambda x:x[1], reverse=True)
-    print("")
-    print(sorted_one[0])
-    print(player_placements[sorted_one[0][0]])
-    print(sorted_one[1])
-    print(player_placements[sorted_one[1][0]])
-    print(sorted_one[2])
-    print(player_placements[sorted_one[2][0]])
-    print("")
-    print("FIRST")
-    print(player_brackets[sorted_one[0][0]])
-    print("")
-    print("SECOND")
-    print(player_brackets[sorted_one[1][0]])
-    print("")
-    print("THIRD")
-    print(player_brackets[sorted_one[2][0]])
-    print("")
+    results = {}
+    for i in range(200):
+        results[i] = {'placements': player_placements[sorted_one[i][0]], 'bracket': player_brackets[sorted_one[i][0]]}
+
+    pd_results = pd.DataFrame.from_dict(results, orient='index')
+    print(pd_results)
+    pd_results.to_csv('results.csv')
+
+
 
 
 
 
 def run():
     West, Midwest, East, South = generate_bracket()
-    sim_dict = sim_actuals(West, Midwest, East, South, n=5000)
-    player_brackets = sim_choices(West, Midwest, East, South, n=1000)
+    sim_dict = sim_actuals(West, Midwest, East, South, n=15000)  # 15000
+    player_brackets = sim_choices(West, Midwest, East, South, n=10000) # 10000
     player_scores, player_brackets = score_brackets(player_brackets, sim_dict)
     run_contest_sims(player_scores, player_brackets)
 

@@ -6,8 +6,8 @@ import random
 
 game_probs = {}
 
-def sim_actuals(West, Midwest, East, South, n=10000):
-    kenpom = pd.read_csv('/Users/ericthiel/Downloads/testing_brackets - KP.csv').to_dict('records')
+def sim_actuals(West, Midwest, East, South, n=100000):
+    kenpom = pd.read_csv('/Users/ericthiel/Downloads/bracket_2023 - KP.csv').to_dict('records')
     kp_dict = {}
     for team in kenpom:
         seed_list_adjusted_name = adjust_name(team['TeamName'])
@@ -33,9 +33,9 @@ def sim_actuals(West, Midwest, East, South, n=10000):
 def get_game_winner(game_participants, kp_dict):
     game_name = f"{game_participants[0].name} vs {game_participants[1].name}"
     if game_name not in game_probs:
-        one = kp_dict[game_participants[0].name]['AdjEM']
-        two = kp_dict[game_participants[1].name]['AdjEM']
-        prob = norm.cdf(one - two, 0, 11)
+        one = kp_dict[game_participants[0].name]['NEW_ADJ_EM']
+        two = kp_dict[game_participants[1].name]['NEW_ADJ_EM']
+        prob = norm.cdf(one - two, 0, 13)
         game_probs[game_name] = prob
     else:
         prob = game_probs[game_name]

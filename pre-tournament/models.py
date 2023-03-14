@@ -1,10 +1,7 @@
 
 
 def adjust_name(KP_name):
-    kp_seedlist = {'Connecticut': 'UConn', "Saint Mary's": "Saint Mary's (CA)",
-                   'Texas A&M Corpus Chris':'A&M-Corpus Christi',
-                   'USC': 'Southern California',
-                   'Miami FL': "Miami (FL)"}
+    kp_seedlist = {}
     if KP_name in kp_seedlist:
         return kp_seedlist[KP_name]
     else:

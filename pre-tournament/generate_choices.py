@@ -38,8 +38,18 @@ def sim_choice_round(West, Midwest, East, South, pick_dict, round):
 
     
 def get_game_picked(game_participants, pick_dict, round):
-    one = pick_dict[game_participants[0].name][round]
-    two = pick_dict[game_participants[1].name][round]
+    if round == 1:
+        one = pick_dict[game_participants[0].name][round]
+        two = pick_dict[game_participants[1].name][round]
+    else:
+        one = pick_dict[game_participants[0].name][round] ** (1-round*0.09) # 0.07
+        two = pick_dict[game_participants[1].name][round] ** (1-round*0.09) # 0.07
+        if game_participants[0].name == 'Duke' or game_participants[0].name == 'Gonzaga':  # rabid fanbases
+            one = pick_dict[game_participants[0].name][round] ** (1-round*0.09) + 0.02
+            two = two = pick_dict[game_participants[1].name][round] ** (1-round*0.09) - 0.02
+        if game_participants[1].name == 'Duke' or game_participants[1].name == 'Gonzaga':  # rabid fanbases
+            one = pick_dict[game_participants[0].name][round] ** (1-round*0.09) -0.02
+            two = two = pick_dict[game_participants[1].name][round] ** (1-round*0.09) + 0.02
     total = one + two
     one /= total
     two /= total
@@ -50,13 +60,9 @@ def get_game_picked(game_participants, pick_dict, round):
 
 
 
-
-
-
-
     # build_round(teams, first_four_winners)
 
-def sim_choices(West, Midwest, East, South, n=10000):
+def sim_choices(West, Midwest, East, South, n=100000):
     pick_dict = get_pick_percs()
     choice_dict = {}
     for i in tqdm(range(n)):
@@ -74,12 +80,11 @@ def sim_choices(West, Midwest, East, South, n=10000):
         West_winners, Midwest_winners, East_winners, South_winners = sim_choice_round(West_winners, Midwest_winners, East_winners, South_winners, pick_dict, 6)
         sim_winners.append(West_winners + Midwest_winners + East_winners + South_winners)
         choice_dict[i] = sim_winners
-    print(len(choice_dict))
     return choice_dict
 
 
 def get_pick_percs():
-    ok = pd.read_csv('/Users/ericthiel/Downloads/testing_brackets - pick_perc_std.csv').to_dict('records')
+    ok = pd.read_csv('/Users/ericthiel/Downloads/bracket_2023 - pick_perc_std.csv').to_dict('records')
     pick_dict = {}
     for i in ok:
         seed_list_adjusted_name = adjust_name(i['team'])
